@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Management App</title>
+    <script src="scripts.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!--Check updated balance/budget here-->
+    <header>
+        <div>
+            <h1>Cash Management</h1>
+        </div>
+        <div id="balanceBudget">
+            <h3>BALANCE/BUDGET:</h3>
+            <h3 id="balanceDisplay"></h3>
+            <div id="balance-row">
+                <input class="inputFields" id="balanceInput" type="number" placeholder="Add Balance">
+                <button class="submitBtn" id="balanceBtn" onclick="addBalance()">+</button>
+            </div>
+        </div>
+    </header>
+
+    <!--Add transaction and desciption here-->
+    <section>
+        <div class="information">
+            <form class="styledForm" id="inputForm">
+                <div class="formRow">
+                    <label class="formLabel" for="description">DESCRIPTION</label>
+                    <label class="formLabel" for="amount">AMOUNT</label>
+                    <label class="formLabel" for="inOut">+ / -</label>
+                    <label class="formLabel" for="date">DATE</label>
+                </div>
+                <div class="formRow">
+                    <input class="inputFields" id="description" type="text" placeholder="Enter Description">
+                    <input class="inputFields" id="amount" type="number" placeholder="Enter Amount">
+                    <input class="inputFields" id="inOut" type="text" placeholder="+ / -">
+                    <input class="inputFields" id="date" type="date">
+                </div>
+            </form>
+        </div>
+        <div class="information">
+            <button class="submitBtn" id="submitBtnInfo" onclick="addInfo()">+</button>
+        </div>
+
+        <!--Choose to sort transactions-->
+        <div class="information">
+            <form class="styledForm">
+                <div class="formRow">
+                    <label class="formLabel" id="sortLabel">SORT</label>
+                </div>
+                <div class="formRow">
+                    <select class="inputFields" id="sortOptions" onchange="sortTable()">
+                        <option value="all">All</option>
+                        <option value="positive">+</option>
+                        <option value="negative">-</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!--Where transactions are displayed-->
+    <div class="historyContainer">
+        <table id="history">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+
+    <!--Using local storage so can just refresh page to reset data-->
+    <footer>
+        <button id="resetBtn" onClick="window.location.reload();">RESET</button>
+    </footer>
+</body>
+</html>
